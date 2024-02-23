@@ -1,11 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using CustomExtensions;
 using UnityEngine.SceneManagement;
 
-public class GameBehavior : MonoBehaviour
+public class GameBehavior : MonoBehaviour, IManager
 {
+    public string _state
+    {
+        get { return _state;}
+        set { _state = value;}
+    }
+    void Start()
+    {
+        Initialize();
+    }
+
+    public void Initialize()
+     {
+        _state = "Manager intialized..";
+        _state.FancyDebug();
+        Debug.Log(_state);
+    }
+
     public bool showWinScreen = false;
     public bool showLossScreen = false;
 
@@ -113,7 +130,7 @@ public class GameBehavior : MonoBehaviour
             {
                 SceneManager.LoadScene(0);
                 Time.timeScale = 1.0f;
-                RestartLevel();
+                Utilities.RestartLevel(0);
             }
         }
 
@@ -124,7 +141,7 @@ public class GameBehavior : MonoBehaviour
             {
                 SceneManager.LoadScene(0);
                 Time.timeScale = 1.0f;
-                RestartLevel();
+                Utilities.RestartLevel(0);
             }
         }
 
