@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class GameBehavior : MonoBehaviour, IManager
 {
-    public string _state
+    
+    private string _state;
+    public string State
     {
         get { return _state;}
         set { _state = value;}
